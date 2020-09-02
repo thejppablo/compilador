@@ -1,0 +1,2 @@
+class Compilador:
+    int()
