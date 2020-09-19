@@ -7,23 +7,22 @@ entrada = input("insere ")
 minus = dividir(string.ascii_lowercase)
 maius = dividir(string.ascii_uppercase)
 
-key_minus = dict(zip(minus,maius))
-key_maius = dict(zip(maius,minus))
+keys = dict(zip(maius,minus))
+keys.update(dict(zip(minus,maius))) # Um dicionario para todas as palavras, para não precisar de 2 if.
+
 
 newWord = []
 
 for n in entrada:
-    if n in key_minus:
-        letramin = key_minus.get(n)
-        newWord.append(letramin)
-    elif n in key_maius:
-        letramai = key_maius.get(n)
-        newWord.append(letramai)
+    if n in keys:
+        letra = keys.get(n)
+        newWord.append(letra)
+    else: # Adicionei esse else para o resto dos caracteres que não estão nas tabelas como por exemplo o espaço.
+        newWord.append(n)
 
-palavra = ""
+palavra = "".join(newWord) # https://www.bernardi.cloud/2012/11/06/python-string-concatenation-vs-list-join/
 
-for x in newWord:
-    palavra+=x
+    
 print(newWord)
 print(palavra)
 
